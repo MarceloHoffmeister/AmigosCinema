@@ -1,0 +1,18 @@
+DROP TABLE IF EXISTS Amigos;
+DROP TABLE IF EXISTS Filmes;
+
+CREATE TABLE Amigos(
+    Nome VARCHAR(50)NOT NULL PRIMARY KEY,
+    Apelido VARCHAR(30),
+    Cidade VARCHAR(50)NOT NULL,
+    Email VARCHAR(50)NOT NULL,
+    Whatsapp VARCHAR(30),
+    Instagram VARCHAR(30)
+);
+
+CREATE TABLE Filmes(
+    Sequencial INT NOT NULL AUTO_INCREMENT PRIMARY KEY,
+    Título VARCHAR(60) NOT NULL,
+    Gênero INT NOT NULL,
+    Ano INT NOT NULL
+);
