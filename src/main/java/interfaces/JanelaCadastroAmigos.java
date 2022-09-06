@@ -47,6 +47,8 @@ public class JanelaCadastroAmigos extends javax.swing.JFrame {
     private void initComponents() {
         java.awt.GridBagConstraints gridBagConstraints;
 
+        sexoButtonGroup = new javax.swing.ButtonGroup();
+        estado_civilButtonGroup = new javax.swing.ButtonGroup();
         nomeLabel = new javax.swing.JLabel();
         nomeTextField = new javax.swing.JTextField();
         apelidoLabel = new javax.swing.JLabel();
@@ -67,6 +69,16 @@ public class JanelaCadastroAmigos extends javax.swing.JFrame {
         LimparButton = new javax.swing.JButton();
         amigos_cadastradosComboBox = new javax.swing.JComboBox<>();
         amigosCadastradosTextField = new javax.swing.JLabel();
+        sexoPanel = new javax.swing.JPanel();
+        femininoRadioButton = new javax.swing.JRadioButton();
+        masculinoRadioButton = new javax.swing.JRadioButton();
+        estado_civilPanel = new javax.swing.JPanel();
+        solteiroRadioButton = new javax.swing.JRadioButton();
+        casadoRadioButton = new javax.swing.JRadioButton();
+        divorciadoRadioButton = new javax.swing.JRadioButton();
+        viuvoRadioButton = new javax.swing.JRadioButton();
+        sexoTextLabel = new javax.swing.JLabel();
+        estado_civilTextLabel = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
         setTitle("Cadastrar Amigos");
@@ -77,7 +89,7 @@ public class JanelaCadastroAmigos extends javax.swing.JFrame {
         gridBagConstraints.gridx = 0;
         gridBagConstraints.gridy = 1;
         gridBagConstraints.anchor = java.awt.GridBagConstraints.LINE_END;
-        gridBagConstraints.insets = new java.awt.Insets(0, 5, 0, 5);
+        gridBagConstraints.insets = new java.awt.Insets(5, 5, 5, 5);
         getContentPane().add(nomeLabel, gridBagConstraints);
 
         nomeTextField.setColumns(20);
@@ -93,7 +105,7 @@ public class JanelaCadastroAmigos extends javax.swing.JFrame {
         gridBagConstraints.gridx = 0;
         gridBagConstraints.gridy = 2;
         gridBagConstraints.anchor = java.awt.GridBagConstraints.LINE_END;
-        gridBagConstraints.insets = new java.awt.Insets(0, 5, 0, 5);
+        gridBagConstraints.insets = new java.awt.Insets(5, 5, 5, 5);
         getContentPane().add(apelidoLabel, gridBagConstraints);
 
         apelidoTextField.setColumns(20);
@@ -107,15 +119,15 @@ public class JanelaCadastroAmigos extends javax.swing.JFrame {
         cidadeLabel.setText("Cidade");
         gridBagConstraints = new java.awt.GridBagConstraints();
         gridBagConstraints.gridx = 0;
-        gridBagConstraints.gridy = 3;
+        gridBagConstraints.gridy = 5;
         gridBagConstraints.anchor = java.awt.GridBagConstraints.LINE_END;
-        gridBagConstraints.insets = new java.awt.Insets(0, 5, 0, 5);
+        gridBagConstraints.insets = new java.awt.Insets(5, 5, 5, 5);
         getContentPane().add(cidadeLabel, gridBagConstraints);
 
         cidadeTextField.setColumns(20);
         gridBagConstraints = new java.awt.GridBagConstraints();
         gridBagConstraints.gridx = 1;
-        gridBagConstraints.gridy = 3;
+        gridBagConstraints.gridy = 5;
         gridBagConstraints.anchor = java.awt.GridBagConstraints.NORTHWEST;
         gridBagConstraints.insets = new java.awt.Insets(5, 5, 5, 5);
         getContentPane().add(cidadeTextField, gridBagConstraints);
@@ -123,15 +135,15 @@ public class JanelaCadastroAmigos extends javax.swing.JFrame {
         emailLabel.setText("Email");
         gridBagConstraints = new java.awt.GridBagConstraints();
         gridBagConstraints.gridx = 0;
-        gridBagConstraints.gridy = 4;
+        gridBagConstraints.gridy = 6;
         gridBagConstraints.anchor = java.awt.GridBagConstraints.LINE_END;
-        gridBagConstraints.insets = new java.awt.Insets(0, 5, 0, 5);
+        gridBagConstraints.insets = new java.awt.Insets(5, 5, 5, 5);
         getContentPane().add(emailLabel, gridBagConstraints);
 
         emailTextField.setColumns(20);
         gridBagConstraints = new java.awt.GridBagConstraints();
         gridBagConstraints.gridx = 1;
-        gridBagConstraints.gridy = 4;
+        gridBagConstraints.gridy = 6;
         gridBagConstraints.anchor = java.awt.GridBagConstraints.NORTHWEST;
         gridBagConstraints.insets = new java.awt.Insets(5, 5, 5, 5);
         getContentPane().add(emailTextField, gridBagConstraints);
@@ -139,23 +151,23 @@ public class JanelaCadastroAmigos extends javax.swing.JFrame {
         whatsappLabel.setText("Whatsapp");
         gridBagConstraints = new java.awt.GridBagConstraints();
         gridBagConstraints.gridx = 0;
-        gridBagConstraints.gridy = 5;
+        gridBagConstraints.gridy = 7;
         gridBagConstraints.anchor = java.awt.GridBagConstraints.LINE_END;
-        gridBagConstraints.insets = new java.awt.Insets(0, 5, 0, 5);
+        gridBagConstraints.insets = new java.awt.Insets(5, 5, 5, 5);
         getContentPane().add(whatsappLabel, gridBagConstraints);
 
         instagramLabel.setText("Instagram");
         gridBagConstraints = new java.awt.GridBagConstraints();
         gridBagConstraints.gridx = 0;
-        gridBagConstraints.gridy = 6;
+        gridBagConstraints.gridy = 8;
         gridBagConstraints.anchor = java.awt.GridBagConstraints.LINE_END;
-        gridBagConstraints.insets = new java.awt.Insets(0, 5, 0, 5);
+        gridBagConstraints.insets = new java.awt.Insets(5, 5, 5, 5);
         getContentPane().add(instagramLabel, gridBagConstraints);
 
         instagramTextField.setColumns(20);
         gridBagConstraints = new java.awt.GridBagConstraints();
         gridBagConstraints.gridx = 1;
-        gridBagConstraints.gridy = 6;
+        gridBagConstraints.gridy = 8;
         gridBagConstraints.anchor = java.awt.GridBagConstraints.NORTHWEST;
         gridBagConstraints.insets = new java.awt.Insets(5, 5, 5, 5);
         getContentPane().add(instagramTextField, gridBagConstraints);
@@ -168,7 +180,7 @@ public class JanelaCadastroAmigos extends javax.swing.JFrame {
         });
         gridBagConstraints = new java.awt.GridBagConstraints();
         gridBagConstraints.gridx = 1;
-        gridBagConstraints.gridy = 5;
+        gridBagConstraints.gridy = 7;
         gridBagConstraints.anchor = java.awt.GridBagConstraints.NORTHWEST;
         gridBagConstraints.insets = new java.awt.Insets(5, 5, 5, 5);
         getContentPane().add(whatsappTextField, gridBagConstraints);
@@ -214,10 +226,10 @@ public class JanelaCadastroAmigos extends javax.swing.JFrame {
         comandosPanel.add(LimparButton);
 
         gridBagConstraints = new java.awt.GridBagConstraints();
-        gridBagConstraints.gridx = 0;
-        gridBagConstraints.gridy = 7;
-        gridBagConstraints.gridwidth = 2;
+        gridBagConstraints.gridx = 1;
+        gridBagConstraints.gridy = 9;
         gridBagConstraints.anchor = java.awt.GridBagConstraints.NORTHWEST;
+        gridBagConstraints.insets = new java.awt.Insets(5, 5, 5, 5);
         getContentPane().add(comandosPanel, gridBagConstraints);
 
         amigos_cadastradosComboBox.setModel(new DefaultComboBoxModel(amigos_cadastrados));
@@ -234,8 +246,88 @@ public class JanelaCadastroAmigos extends javax.swing.JFrame {
         gridBagConstraints.gridx = 0;
         gridBagConstraints.gridy = 0;
         gridBagConstraints.anchor = java.awt.GridBagConstraints.LINE_END;
-        gridBagConstraints.insets = new java.awt.Insets(0, 5, 0, 5);
+        gridBagConstraints.insets = new java.awt.Insets(5, 5, 5, 5);
         getContentPane().add(amigosCadastradosTextField, gridBagConstraints);
+
+        sexoPanel.setPreferredSize(new java.awt.Dimension(200, 33));
+
+        sexoButtonGroup.add(femininoRadioButton);
+        femininoRadioButton.setMnemonic('F');
+        femininoRadioButton.setText("Feminino");
+
+        masculinoRadioButton.setMnemonic('M');
+        masculinoRadioButton.setText("Masculino");
+
+        javax.swing.GroupLayout sexoPanelLayout = new javax.swing.GroupLayout(sexoPanel);
+        sexoPanel.setLayout(sexoPanelLayout);
+        sexoPanelLayout.setHorizontalGroup(
+            sexoPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(sexoPanelLayout.createSequentialGroup()
+                .addGap(5, 5, 5)
+                .addComponent(femininoRadioButton)
+                .addGap(26, 26, 26)
+                .addComponent(masculinoRadioButton)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+        );
+        sexoPanelLayout.setVerticalGroup(
+            sexoPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(sexoPanelLayout.createSequentialGroup()
+                .addGap(5, 5, 5)
+                .addGroup(sexoPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(femininoRadioButton)
+                    .addComponent(masculinoRadioButton))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+        );
+
+        gridBagConstraints = new java.awt.GridBagConstraints();
+        gridBagConstraints.gridx = 1;
+        gridBagConstraints.gridy = 3;
+        gridBagConstraints.anchor = java.awt.GridBagConstraints.NORTHWEST;
+        gridBagConstraints.insets = new java.awt.Insets(5, 5, 5, 5);
+        getContentPane().add(sexoPanel, gridBagConstraints);
+
+        estado_civilButtonGroup.add(solteiroRadioButton);
+        solteiroRadioButton.setMnemonic('0');
+        solteiroRadioButton.setText("Solteiro");
+        estado_civilPanel.add(solteiroRadioButton);
+
+        estado_civilButtonGroup.add(casadoRadioButton);
+        casadoRadioButton.setMnemonic('1');
+        casadoRadioButton.setText("Casado");
+        estado_civilPanel.add(casadoRadioButton);
+
+        estado_civilButtonGroup.add(divorciadoRadioButton);
+        divorciadoRadioButton.setMnemonic('2');
+        divorciadoRadioButton.setText("Divorciado");
+        estado_civilPanel.add(divorciadoRadioButton);
+
+        estado_civilButtonGroup.add(viuvoRadioButton);
+        viuvoRadioButton.setMnemonic('2');
+        viuvoRadioButton.setText("Viúvo");
+        estado_civilPanel.add(viuvoRadioButton);
+
+        gridBagConstraints = new java.awt.GridBagConstraints();
+        gridBagConstraints.gridx = 1;
+        gridBagConstraints.gridy = 4;
+        gridBagConstraints.anchor = java.awt.GridBagConstraints.NORTHWEST;
+        gridBagConstraints.insets = new java.awt.Insets(5, 5, 5, 5);
+        getContentPane().add(estado_civilPanel, gridBagConstraints);
+
+        sexoTextLabel.setText("Sexo");
+        gridBagConstraints = new java.awt.GridBagConstraints();
+        gridBagConstraints.gridx = 0;
+        gridBagConstraints.gridy = 3;
+        gridBagConstraints.anchor = java.awt.GridBagConstraints.LINE_END;
+        gridBagConstraints.insets = new java.awt.Insets(5, 5, 5, 5);
+        getContentPane().add(sexoTextLabel, gridBagConstraints);
+
+        estado_civilTextLabel.setText("Estado civil");
+        gridBagConstraints = new java.awt.GridBagConstraints();
+        gridBagConstraints.gridx = 0;
+        gridBagConstraints.gridy = 4;
+        gridBagConstraints.anchor = java.awt.GridBagConstraints.LINE_END;
+        gridBagConstraints.insets = new java.awt.Insets(5, 5, 5, 5);
+        getContentPane().add(estado_civilTextLabel, gridBagConstraints);
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
@@ -386,18 +478,30 @@ public class JanelaCadastroAmigos extends javax.swing.JFrame {
     private javax.swing.JComboBox<String> amigos_cadastradosComboBox;
     private javax.swing.JLabel apelidoLabel;
     private javax.swing.JTextField apelidoTextField;
+    private javax.swing.JRadioButton casadoRadioButton;
     private javax.swing.JLabel cidadeLabel;
     private javax.swing.JTextField cidadeTextField;
     private javax.swing.JPanel comandosPanel;
     private javax.swing.JButton consultarButton;
+    private javax.swing.JRadioButton divorciadoRadioButton;
     private javax.swing.JLabel emailLabel;
     private javax.swing.JTextField emailTextField;
+    private javax.swing.ButtonGroup estado_civilButtonGroup;
+    private javax.swing.JPanel estado_civilPanel;
+    private javax.swing.JLabel estado_civilTextLabel;
+    private javax.swing.JRadioButton femininoRadioButton;
     private javax.swing.JButton inserirButton;
     private javax.swing.JLabel instagramLabel;
     private javax.swing.JTextField instagramTextField;
+    private javax.swing.JRadioButton masculinoRadioButton;
     private javax.swing.JLabel nomeLabel;
     private javax.swing.JTextField nomeTextField;
     private javax.swing.JButton removerButton;
+    private javax.swing.ButtonGroup sexoButtonGroup;
+    private javax.swing.JPanel sexoPanel;
+    private javax.swing.JLabel sexoTextLabel;
+    private javax.swing.JRadioButton solteiroRadioButton;
+    private javax.swing.JRadioButton viuvoRadioButton;
     private javax.swing.JLabel whatsappLabel;
     private javax.swing.JTextField whatsappTextField;
     // End of variables declaration//GEN-END:variables
