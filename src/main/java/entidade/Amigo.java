@@ -7,7 +7,10 @@ import java.util.ArrayList;
 import persistência.BD;
 
 public class Amigo {
+    public enum EstadoCivil { solteiro, casado, divociado, viúvo };
     private String nome, apelido, cidade, email, whatsapp, instagram;
+    char sexo;
+    EstadoCivil estadoCivil;
 
     public static Amigo buscarAmigo(String nome){
         String sql = "SELECT * FROM Amigos WHERE Nome=?";

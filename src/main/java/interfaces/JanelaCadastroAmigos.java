@@ -66,7 +66,7 @@ public class JanelaCadastroAmigos extends javax.swing.JFrame {
         removerButton = new javax.swing.JButton();
         LimparButton = new javax.swing.JButton();
         amigos_cadastradosComboBox = new javax.swing.JComboBox<>();
-        jLabel1 = new javax.swing.JLabel();
+        amigosCadastradosTextField = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
         setTitle("Cadastrar Amigos");
@@ -75,106 +75,92 @@ public class JanelaCadastroAmigos extends javax.swing.JFrame {
         nomeLabel.setText("Nome");
         gridBagConstraints = new java.awt.GridBagConstraints();
         gridBagConstraints.gridx = 0;
-        gridBagConstraints.gridy = 2;
-        gridBagConstraints.anchor = java.awt.GridBagConstraints.NORTHWEST;
-        gridBagConstraints.insets = new java.awt.Insets(8, 91, 0, 0);
+        gridBagConstraints.gridy = 1;
+        gridBagConstraints.anchor = java.awt.GridBagConstraints.LINE_END;
+        gridBagConstraints.insets = new java.awt.Insets(0, 5, 0, 5);
         getContentPane().add(nomeLabel, gridBagConstraints);
 
-        nomeTextField.setColumns(1);
+        nomeTextField.setColumns(20);
         gridBagConstraints = new java.awt.GridBagConstraints();
         gridBagConstraints.gridx = 1;
-        gridBagConstraints.gridy = 2;
-        gridBagConstraints.gridwidth = 5;
-        gridBagConstraints.gridheight = 2;
-        gridBagConstraints.ipadx = 499;
-        gridBagConstraints.ipady = -2;
+        gridBagConstraints.gridy = 1;
         gridBagConstraints.anchor = java.awt.GridBagConstraints.NORTHWEST;
-        gridBagConstraints.insets = new java.awt.Insets(6, 6, 0, 0);
+        gridBagConstraints.insets = new java.awt.Insets(5, 5, 5, 5);
         getContentPane().add(nomeTextField, gridBagConstraints);
 
         apelidoLabel.setText("Apelido");
         gridBagConstraints = new java.awt.GridBagConstraints();
         gridBagConstraints.gridx = 0;
-        gridBagConstraints.gridy = 4;
-        gridBagConstraints.anchor = java.awt.GridBagConstraints.NORTHWEST;
-        gridBagConstraints.insets = new java.awt.Insets(9, 82, 0, 0);
+        gridBagConstraints.gridy = 2;
+        gridBagConstraints.anchor = java.awt.GridBagConstraints.LINE_END;
+        gridBagConstraints.insets = new java.awt.Insets(0, 5, 0, 5);
         getContentPane().add(apelidoLabel, gridBagConstraints);
 
-        apelidoTextField.setColumns(1);
+        apelidoTextField.setColumns(20);
         gridBagConstraints = new java.awt.GridBagConstraints();
         gridBagConstraints.gridx = 1;
-        gridBagConstraints.gridy = 4;
-        gridBagConstraints.gridheight = 2;
-        gridBagConstraints.ipadx = 149;
+        gridBagConstraints.gridy = 2;
         gridBagConstraints.anchor = java.awt.GridBagConstraints.NORTHWEST;
-        gridBagConstraints.insets = new java.awt.Insets(6, 6, 0, 0);
+        gridBagConstraints.insets = new java.awt.Insets(5, 5, 5, 5);
         getContentPane().add(apelidoTextField, gridBagConstraints);
 
         cidadeLabel.setText("Cidade");
         gridBagConstraints = new java.awt.GridBagConstraints();
         gridBagConstraints.gridx = 0;
-        gridBagConstraints.gridy = 6;
-        gridBagConstraints.anchor = java.awt.GridBagConstraints.NORTHWEST;
-        gridBagConstraints.insets = new java.awt.Insets(10, 87, 0, 0);
+        gridBagConstraints.gridy = 3;
+        gridBagConstraints.anchor = java.awt.GridBagConstraints.LINE_END;
+        gridBagConstraints.insets = new java.awt.Insets(0, 5, 0, 5);
         getContentPane().add(cidadeLabel, gridBagConstraints);
 
-        cidadeTextField.setColumns(1);
+        cidadeTextField.setColumns(20);
         gridBagConstraints = new java.awt.GridBagConstraints();
         gridBagConstraints.gridx = 1;
-        gridBagConstraints.gridy = 6;
-        gridBagConstraints.gridwidth = 2;
-        gridBagConstraints.gridheight = 2;
-        gridBagConstraints.ipadx = 199;
+        gridBagConstraints.gridy = 3;
         gridBagConstraints.anchor = java.awt.GridBagConstraints.NORTHWEST;
-        gridBagConstraints.insets = new java.awt.Insets(7, 6, 0, 0);
+        gridBagConstraints.insets = new java.awt.Insets(5, 5, 5, 5);
         getContentPane().add(cidadeTextField, gridBagConstraints);
 
         emailLabel.setText("Email");
         gridBagConstraints = new java.awt.GridBagConstraints();
         gridBagConstraints.gridx = 0;
-        gridBagConstraints.gridy = 8;
-        gridBagConstraints.anchor = java.awt.GridBagConstraints.NORTHWEST;
-        gridBagConstraints.insets = new java.awt.Insets(9, 97, 0, 0);
+        gridBagConstraints.gridy = 4;
+        gridBagConstraints.anchor = java.awt.GridBagConstraints.LINE_END;
+        gridBagConstraints.insets = new java.awt.Insets(0, 5, 0, 5);
         getContentPane().add(emailLabel, gridBagConstraints);
 
-        emailTextField.setColumns(1);
+        emailTextField.setColumns(20);
         gridBagConstraints = new java.awt.GridBagConstraints();
         gridBagConstraints.gridx = 1;
-        gridBagConstraints.gridy = 8;
-        gridBagConstraints.gridwidth = 4;
-        gridBagConstraints.gridheight = 2;
-        gridBagConstraints.ipadx = 349;
+        gridBagConstraints.gridy = 4;
         gridBagConstraints.anchor = java.awt.GridBagConstraints.NORTHWEST;
-        gridBagConstraints.insets = new java.awt.Insets(6, 6, 0, 0);
+        gridBagConstraints.insets = new java.awt.Insets(5, 5, 5, 5);
         getContentPane().add(emailTextField, gridBagConstraints);
 
         whatsappLabel.setText("Whatsapp");
         gridBagConstraints = new java.awt.GridBagConstraints();
         gridBagConstraints.gridx = 0;
-        gridBagConstraints.gridy = 10;
-        gridBagConstraints.anchor = java.awt.GridBagConstraints.NORTHWEST;
-        gridBagConstraints.insets = new java.awt.Insets(9, 68, 0, 0);
+        gridBagConstraints.gridy = 5;
+        gridBagConstraints.anchor = java.awt.GridBagConstraints.LINE_END;
+        gridBagConstraints.insets = new java.awt.Insets(0, 5, 0, 5);
         getContentPane().add(whatsappLabel, gridBagConstraints);
 
         instagramLabel.setText("Instagram");
         gridBagConstraints = new java.awt.GridBagConstraints();
         gridBagConstraints.gridx = 0;
-        gridBagConstraints.gridy = 12;
-        gridBagConstraints.anchor = java.awt.GridBagConstraints.NORTHWEST;
-        gridBagConstraints.insets = new java.awt.Insets(9, 65, 0, 0);
+        gridBagConstraints.gridy = 6;
+        gridBagConstraints.anchor = java.awt.GridBagConstraints.LINE_END;
+        gridBagConstraints.insets = new java.awt.Insets(0, 5, 0, 5);
         getContentPane().add(instagramLabel, gridBagConstraints);
 
-        instagramTextField.setColumns(1);
+        instagramTextField.setColumns(20);
         gridBagConstraints = new java.awt.GridBagConstraints();
         gridBagConstraints.gridx = 1;
-        gridBagConstraints.gridy = 12;
-        gridBagConstraints.gridheight = 2;
-        gridBagConstraints.ipadx = 149;
+        gridBagConstraints.gridy = 6;
         gridBagConstraints.anchor = java.awt.GridBagConstraints.NORTHWEST;
-        gridBagConstraints.insets = new java.awt.Insets(6, 6, 0, 0);
+        gridBagConstraints.insets = new java.awt.Insets(5, 5, 5, 5);
         getContentPane().add(instagramTextField, gridBagConstraints);
 
-        whatsappTextField.setColumns(1);
+        whatsappTextField.setColumns(20);
         whatsappTextField.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 whatsappTextFieldActionPerformed(evt);
@@ -182,11 +168,9 @@ public class JanelaCadastroAmigos extends javax.swing.JFrame {
         });
         gridBagConstraints = new java.awt.GridBagConstraints();
         gridBagConstraints.gridx = 1;
-        gridBagConstraints.gridy = 10;
-        gridBagConstraints.gridheight = 2;
-        gridBagConstraints.ipadx = 149;
+        gridBagConstraints.gridy = 5;
         gridBagConstraints.anchor = java.awt.GridBagConstraints.NORTHWEST;
-        gridBagConstraints.insets = new java.awt.Insets(6, 6, 0, 0);
+        gridBagConstraints.insets = new java.awt.Insets(5, 5, 5, 5);
         getContentPane().add(whatsappTextField, gridBagConstraints);
 
         inserirButton.setText("Inserir");
@@ -231,31 +215,27 @@ public class JanelaCadastroAmigos extends javax.swing.JFrame {
 
         gridBagConstraints = new java.awt.GridBagConstraints();
         gridBagConstraints.gridx = 0;
-        gridBagConstraints.gridy = 14;
-        gridBagConstraints.gridwidth = 7;
-        gridBagConstraints.ipadx = 152;
+        gridBagConstraints.gridy = 7;
+        gridBagConstraints.gridwidth = 2;
         gridBagConstraints.anchor = java.awt.GridBagConstraints.NORTHWEST;
-        gridBagConstraints.insets = new java.awt.Insets(17, 82, 6, 6);
         getContentPane().add(comandosPanel, gridBagConstraints);
 
         amigos_cadastradosComboBox.setModel(new DefaultComboBoxModel(amigos_cadastrados));
+        amigos_cadastradosComboBox.setPreferredSize(new java.awt.Dimension(200, 25));
         gridBagConstraints = new java.awt.GridBagConstraints();
         gridBagConstraints.gridx = 1;
         gridBagConstraints.gridy = 0;
-        gridBagConstraints.gridwidth = 3;
-        gridBagConstraints.gridheight = 2;
-        gridBagConstraints.ipadx = 157;
         gridBagConstraints.anchor = java.awt.GridBagConstraints.NORTHWEST;
-        gridBagConstraints.insets = new java.awt.Insets(48, 6, 0, 0);
+        gridBagConstraints.insets = new java.awt.Insets(5, 5, 5, 5);
         getContentPane().add(amigos_cadastradosComboBox, gridBagConstraints);
 
-        jLabel1.setText("Amigos cadastrados");
+        amigosCadastradosTextField.setText("Amigos cadastrados");
         gridBagConstraints = new java.awt.GridBagConstraints();
         gridBagConstraints.gridx = 0;
         gridBagConstraints.gridy = 0;
-        gridBagConstraints.anchor = java.awt.GridBagConstraints.NORTHWEST;
-        gridBagConstraints.insets = new java.awt.Insets(51, 6, 0, 0);
-        getContentPane().add(jLabel1, gridBagConstraints);
+        gridBagConstraints.anchor = java.awt.GridBagConstraints.LINE_END;
+        gridBagConstraints.insets = new java.awt.Insets(0, 5, 0, 5);
+        getContentPane().add(amigosCadastradosTextField, gridBagConstraints);
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
@@ -402,6 +382,7 @@ public class JanelaCadastroAmigos extends javax.swing.JFrame {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton LimparButton;
     private javax.swing.JButton alterarButton;
+    private javax.swing.JLabel amigosCadastradosTextField;
     private javax.swing.JComboBox<String> amigos_cadastradosComboBox;
     private javax.swing.JLabel apelidoLabel;
     private javax.swing.JTextField apelidoTextField;
@@ -414,7 +395,6 @@ public class JanelaCadastroAmigos extends javax.swing.JFrame {
     private javax.swing.JButton inserirButton;
     private javax.swing.JLabel instagramLabel;
     private javax.swing.JTextField instagramTextField;
-    private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel nomeLabel;
     private javax.swing.JTextField nomeTextField;
     private javax.swing.JButton removerButton;
