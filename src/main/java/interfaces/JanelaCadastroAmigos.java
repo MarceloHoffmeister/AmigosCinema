@@ -6,6 +6,7 @@ package interfaces;
 
 import controle.ControladorCadastroAmigos;
 import entidade.Amigo;
+import entidade.Amigo.EstadoCivil;
 import javax.swing.JOptionPane;
 import javax.swing.DefaultComboBoxModel;
 
@@ -35,6 +36,8 @@ public class JanelaCadastroAmigos extends javax.swing.JFrame {
         emailTextField.setText("");
         whatsappTextField.setText("");
         instagramTextField.setText("");
+        sexoButtonGroup.clearSelection();
+        estado_civilButtonGroup.clearSelection();
     }
 
     /**
@@ -173,11 +176,6 @@ public class JanelaCadastroAmigos extends javax.swing.JFrame {
         getContentPane().add(instagramTextField, gridBagConstraints);
 
         whatsappTextField.setColumns(20);
-        whatsappTextField.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                whatsappTextFieldActionPerformed(evt);
-            }
-        });
         gridBagConstraints = new java.awt.GridBagConstraints();
         gridBagConstraints.gridx = 1;
         gridBagConstraints.gridy = 7;
@@ -255,6 +253,7 @@ public class JanelaCadastroAmigos extends javax.swing.JFrame {
         femininoRadioButton.setMnemonic('F');
         femininoRadioButton.setText("Feminino");
 
+        sexoButtonGroup.add(masculinoRadioButton);
         masculinoRadioButton.setMnemonic('M');
         masculinoRadioButton.setText("Masculino");
 
@@ -292,7 +291,7 @@ public class JanelaCadastroAmigos extends javax.swing.JFrame {
         estado_civilPanel.add(solteiroRadioButton);
 
         estado_civilButtonGroup.add(casadoRadioButton);
-        casadoRadioButton.setMnemonic('1');
+        casadoRadioButton.setMnemonic(1);
         casadoRadioButton.setText("Casado");
         estado_civilPanel.add(casadoRadioButton);
 
@@ -332,10 +331,6 @@ public class JanelaCadastroAmigos extends javax.swing.JFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void whatsappTextFieldActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_whatsappTextFieldActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_whatsappTextFieldActionPerformed
-
     private void limparCampos(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_limparCampos
         limparCampos();
     }//GEN-LAST:event_limparCampos
@@ -373,9 +368,27 @@ public class JanelaCadastroAmigos extends javax.swing.JFrame {
             String instagram = amigo.getInstagram();
             if(instagram == null) instagram = "";
             instagramTextField.setText(instagram);
+            selecionaSexoRadioButton(amigo.getSexo());
+            selecioneEstadoCivilRadioButton(amigo.getEstadoCivil().ordinal());
         } else informarErro(mensagem_erro);
     }//GEN-LAST:event_consultarAmigo
 
+    private void selecionaSexoRadioButton(char sexo) {
+        switch(sexo) {
+            case 'F': femininoRadioButton.setSelected(true); break;
+            case 'M': masculinoRadioButton.setSelected(true);
+        }
+    }
+    
+    private void selecioneEstadoCivilRadioButton(int indice_estado_civil) {
+        switch(indice_estado_civil) {
+            case 0: solteiroRadioButton.setSelected(true); break;
+            case 1: casadoRadioButton.setSelected(true); break;
+            case 2: divorciadoRadioButton.setSelected(true); break;
+            case 3: viuvoRadioButton.setSelected(true);
+        }
+    }
+    
     private void alterarAmigo(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_alterarAmigo
         Amigo amigo = obterAmigoInformado();
         String mensagem_erro = null;
@@ -412,7 +425,7 @@ public class JanelaCadastroAmigos extends javax.swing.JFrame {
         else informarErro(mensagem_erro);
     }//GEN-LAST:event_removerAmigo
      
-    private Amigo obterAmigoInformado(){
+    private Amigo obterAmigoInformado(){        
         String nome = nomeTextField.getText();
         if(nome.isEmpty()) return null;
         String apelido = apelidoTextField.getText();
@@ -425,7 +438,15 @@ public class JanelaCadastroAmigos extends javax.swing.JFrame {
         if(whatsapp.isEmpty())whatsapp=null;
         String instagram = instagramTextField.getText();
         if(instagram.isEmpty()) instagram = null;
-        return new Amigo(nome, apelido, cidade, email, whatsapp, instagram);
+        char sexo = 'X';
+        if(sexoButtonGroup.getSelection() != null)
+            sexo = (char) sexoButtonGroup.getSelection().getMnemonic();
+        else return null;
+        EstadoCivil estado_civil = null;
+        if(estado_civilButtonGroup.getSelection() != null)
+            estado_civil = EstadoCivil.values()[estado_civilButtonGroup.getSelection().getMnemonic()];
+        else return null;
+        return new Amigo(nome, apelido, cidade, email, whatsapp, instagram, sexo, estado_civil);
     }
     
     private void informarSucesso(String mensagem){

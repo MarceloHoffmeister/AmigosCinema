@@ -27,7 +27,9 @@ public class Amigo {
                         lista_resultados.getString("Cidade"),
                         lista_resultados.getString("Email"),
                         lista_resultados.getString("Whatsapp"),
-                        lista_resultados.getString("Instagram")
+                        lista_resultados.getString("Instagram"),
+                        lista_resultados.getString("Sexo").toCharArray()[0],
+                        EstadoCivil.values()[lista_resultados.getInt("EstadoCivil")]
                 );
             }
             lista_resultados.close();
@@ -40,8 +42,8 @@ public class Amigo {
     }
     
     public static String inserirAmigo(Amigo amigo){
-        String sql="INSERT INTO Amigos(Nome,Apelido,Cidade,Email,Whatsapp,Instagram)"
-            +"VALUES(?,?,?,?,?,?)";
+        String sql="INSERT INTO Amigos(Nome,Apelido,Cidade,Email,Whatsapp,Instagram,sexo,estadocivil)"
+            +"VALUES(?,?,?,?,?,?,?,?)";
         try {
             PreparedStatement comando = BD.conexão.prepareStatement(sql);
             comando.setString(1, amigo.getNome());
@@ -50,6 +52,8 @@ public class Amigo {
             comando.setString(4, amigo.getEmail());
             comando.setString(5, amigo.getWhatsapp());
             comando.setString(6, amigo.getInstagram());
+            comando.setString(7, amigo.getSexo()+"");
+            comando.setInt(8, amigo.getEstadoCivil().ordinal());
             comando.executeUpdate();
             comando.close();
             return null;
@@ -60,7 +64,7 @@ public class Amigo {
     }
     
     public static String alterarAmigo(Amigo amigo){
-        String sql = "UPDATE Amigos SET Apelido=?, Cidade=?, Email=?, Whatsapp=?, Instagram=?"
+        String sql = "UPDATE Amigos SET Apelido=?, Cidade=?, Email=?, Whatsapp=?, Instagram=?, sexo=?, estadocivil=?"
             +"WHERE Nome?";
         try {
             PreparedStatement comando = BD.conexão.prepareStatement(sql);
@@ -70,6 +74,8 @@ public class Amigo {
             comando.setString(4, amigo.getWhatsapp());
             comando.setString(5, amigo.getInstagram());
             comando.setString(6, amigo.getNome());
+            comando.setString(7, amigo.getSexo()+"");
+            comando.setInt(8, amigo.getEstadoCivil().ordinal());
             comando.executeUpdate();
             comando.close();
             return null;
@@ -111,13 +117,15 @@ public class Amigo {
         return visões.toArray(new Amigo[visões.size()]);
     }
     
-    public Amigo(String nome, String apelido, String cidade, String email, String whatsapp, String instagram) {
+    public Amigo(String nome, String apelido, String cidade, String email, String whatsapp, String instagram, char sexo, EstadoCivil estadoCivil) {
         this.nome = nome;
         this.apelido = apelido;
         this.cidade = cidade;
         this.email = email;
         this.whatsapp = whatsapp;
         this.instagram = instagram;
+        this.sexo = sexo;
+        this.estadoCivil = estadoCivil;
     }
     
     public String getApelido() {
@@ -146,6 +154,14 @@ public class Amigo {
     
     public String getNome() {
         return this.nome;
+    }
+    
+    public char getSexo() {
+        return this.sexo;
+    }
+    
+    public EstadoCivil getEstadoCivil() {
+        return this.estadoCivil;
     }
     
     public String toString() {

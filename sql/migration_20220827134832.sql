@@ -4,6 +4,8 @@ DROP TABLE IF EXISTS Filmes;
 CREATE TABLE Amigos(
     Nome VARCHAR(50)NOT NULL PRIMARY KEY,
     Apelido VARCHAR(30),
+    Sexo VARCHAR(1) NOT NULL,
+    EstadoCivil INT NOT NULL,
     Cidade VARCHAR(50)NOT NULL,
     Email VARCHAR(50)NOT NULL,
     Whatsapp VARCHAR(30),
