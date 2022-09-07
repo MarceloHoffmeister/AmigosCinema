@@ -301,7 +301,9 @@
             <Property name="buttonGroup" type="javax.swing.ButtonGroup" editor="org.netbeans.modules.form.RADComponent$ButtonGroupPropertyEditor">
               <ComponentRef name="estado_civilButtonGroup"/>
             </Property>
-            <Property name="mnemonic" type="int" value="48"/>
+            <Property name="mnemonic" type="int" editor="org.netbeans.modules.form.RADConnectionPropertyEditor">
+              <Connection code="0" type="code"/>
+            </Property>
             <Property name="text" type="java.lang.String" value="Solteiro"/>
           </Properties>
         </Component>
@@ -321,7 +323,9 @@
             <Property name="buttonGroup" type="javax.swing.ButtonGroup" editor="org.netbeans.modules.form.RADComponent$ButtonGroupPropertyEditor">
               <ComponentRef name="estado_civilButtonGroup"/>
             </Property>
-            <Property name="mnemonic" type="int" value="50"/>
+            <Property name="mnemonic" type="int" editor="org.netbeans.modules.form.RADConnectionPropertyEditor">
+              <Connection code="2" type="code"/>
+            </Property>
             <Property name="text" type="java.lang.String" value="Divorciado"/>
           </Properties>
         </Component>
@@ -330,7 +334,9 @@
             <Property name="buttonGroup" type="javax.swing.ButtonGroup" editor="org.netbeans.modules.form.RADComponent$ButtonGroupPropertyEditor">
               <ComponentRef name="estado_civilButtonGroup"/>
             </Property>
-            <Property name="mnemonic" type="int" value="50"/>
+            <Property name="mnemonic" type="int" editor="org.netbeans.modules.form.RADConnectionPropertyEditor">
+              <Connection code="3" type="code"/>
+            </Property>
             <Property name="text" type="java.lang.String" value="Vi&#xfa;vo"/>
           </Properties>
         </Component>

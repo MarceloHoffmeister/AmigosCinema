@@ -286,7 +286,7 @@ public class JanelaCadastroAmigos extends javax.swing.JFrame {
         getContentPane().add(sexoPanel, gridBagConstraints);
 
         estado_civilButtonGroup.add(solteiroRadioButton);
-        solteiroRadioButton.setMnemonic('0');
+        solteiroRadioButton.setMnemonic(0);
         solteiroRadioButton.setText("Solteiro");
         estado_civilPanel.add(solteiroRadioButton);
 
@@ -296,12 +296,12 @@ public class JanelaCadastroAmigos extends javax.swing.JFrame {
         estado_civilPanel.add(casadoRadioButton);
 
         estado_civilButtonGroup.add(divorciadoRadioButton);
-        divorciadoRadioButton.setMnemonic('2');
+        divorciadoRadioButton.setMnemonic(2);
         divorciadoRadioButton.setText("Divorciado");
         estado_civilPanel.add(divorciadoRadioButton);
 
         estado_civilButtonGroup.add(viuvoRadioButton);
-        viuvoRadioButton.setMnemonic('2');
+        viuvoRadioButton.setMnemonic(3);
         viuvoRadioButton.setText("Viúvo");
         estado_civilPanel.add(viuvoRadioButton);
 
