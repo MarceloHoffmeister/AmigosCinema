@@ -64,8 +64,8 @@ public class Amigo {
     }
     
     public static String alterarAmigo(Amigo amigo){
-        String sql = "UPDATE Amigos SET Apelido=?, Cidade=?, Email=?, Whatsapp=?, Instagram=?, sexo=?, estadocivil=?"
-            +"WHERE Nome?";
+        String sql = "UPDATE Amigos SET Apelido=?, Cidade=?, Email=?, Whatsapp=?, Instagram=?, Sexo=?, EstadoCivil=? "
+            +"WHERE Nome=?";
         try {
             PreparedStatement comando = BD.conexão.prepareStatement(sql);
             comando.setString(1, amigo.getApelido());
@@ -73,9 +73,9 @@ public class Amigo {
             comando.setString(3, amigo.getEmail());
             comando.setString(4, amigo.getWhatsapp());
             comando.setString(5, amigo.getInstagram());
-            comando.setString(6, amigo.getNome());
-            comando.setString(7, amigo.getSexo()+"");
-            comando.setInt(8, amigo.getEstadoCivil().ordinal());
+            comando.setString(6, amigo.getSexo()+"");
+            comando.setInt(7, amigo.getEstadoCivil().ordinal());
+            comando.setString(8, amigo.getNome());
             comando.executeUpdate();
             comando.close();
             return null;
