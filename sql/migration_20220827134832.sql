@@ -1,4 +1,6 @@
 DROP TABLE IF EXISTS Amigos;
+DROP TABLE IF EXISTS FilmesCompanhiasCinematrográficas;
+DROP TABLE IF EXISTS FilmesProvedorasStreaming;
 DROP TABLE IF EXISTS Filmes;
 
 CREATE TABLE Amigos(
@@ -17,4 +19,21 @@ CREATE TABLE Filmes(
     Título VARCHAR(60) NOT NULL,
     Gênero INT NOT NULL,
     Ano INT NOT NULL
+);
+
+CREATE TABLE FilmesCompanhiaCinematrográficas(
+    OscarMelhorFilme BOOLEAN NOT NULL,
+    OscarMelhorDiretor VARCHAR(30),
+    OscarMelhorAtor VARCHAR(30),
+    OscarMelhorAtriz VARCHAR(30),
+    FilmeId INT NOT NULL,
+    FOREIGN KEY (FilmeId) REFERENCES Filmes(Sequencial)
+);
+
+CREATE TABLE FilmesProvedorasStreaming(
+    ProvedoraStreaming INT NOT NULL,
+    Produção INT NOT NULL,
+    TotalEpisódios INT NOT NULL,
+    FilmeId INT NOT NULL,
+    FOREING KEY (FilmeId) REFERENCES Filmes(Sequencial)
 );
