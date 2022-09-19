@@ -13,15 +13,15 @@ public class ControladorCadastroFilmes {
         else return "Já existe um filme com os mesmo atributos";
     }
     
-    public String alterarFilme(Filme Filme) {
-        Filme filmel = Filme.buscarFilme(Filme.getSequencial());
-        if(filmel != null) return Filme.alterarFilme(Filme);
+    public String alterarFilme(Filme filme) {
+        Filme filmel = Filme.buscarFilme(filme.getSequencial());
+        if(filmel != null) return Filme.alterarFilme(filme);
         else return "Nome de filme não cadastrado";
     }
     
-    public String removerFilme(int sequencial){
-        Filme filmel=Filme.buscarFilme(sequencial);
-        if(filmel!=null) return Filme.removerFilme(sequencial);
+    public String removerFilme(Filme filme){
+        Filme filmel=Filme.buscarFilme(filme.getSequencial());
+        if(filmel!=null) return Filme.removerFilme(filme);
         else return"Nome de filme não cadastrado";
     }
 }

@@ -24,11 +24,23 @@ public class FilmeProvedoraStreaming extends Filme {
         return this.provedora;
     }
     
+    public void setProvedora(ProvedoraStreaming provedora) {
+        this.provedora = provedora;
+    }
+    
     public Produção getProdução() {
         return this.produção;
     }
     
+    public void setProdução(Produção produção) {
+        this.produção = produção;
+    }
+    
     public int getTotalEpisódios() {
         return this.totalEpisódios;
+    }
+    
+    public void setTotalEpisódios(int totalEpisódios) {
+        this.totalEpisódios = totalEpisódios;
     }
 }

@@ -35,7 +35,7 @@ public class PainelFilmeCompanhiaCinematográfica extends javax.swing.JPanel {
         oscar_diretorTextField.setText(diretor);
     }
     
-    public String getOscarMelhorAtorr() {
+    public String getOscarMelhorAtor() {
         String ator = oscar_atorTextField.getText();
         if (ator.isEmpty()) return null;
         else return ator;

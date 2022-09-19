@@ -7,6 +7,10 @@ package interfaces;
 import controle.ControladorCadastroFilmes;
 import entidade.Filme;
 import entidade.Filme.Gênero;
+import entidade.FilmeCompanhiaCinematográfica;
+import entidade.FilmeProvedoraStreaming;
+import entidade.FilmeProvedoraStreaming.Produção;
+import entidade.FilmeProvedoraStreaming.ProvedoraStreaming;
 import javax.swing.DefaultComboBoxModel;
 import javax.swing.DefaultListModel;
 import javax.swing.JOptionPane;
@@ -65,7 +69,25 @@ public class JanelaCadastroFilmes extends javax.swing.JFrame {
         if(título.isEmpty()) título = null;
         String ano = anoTextField.getText();
         if(ano.isEmpty()) ano = null;
-        return new Filme(sequencial, título, gênero, Integer.parseInt(ano));
+
+        Filme filme = null;
+        int índice_aba_selecionada = especialização_filmeTabbedPane.getSelectedIndex();
+        switch (índice_aba_selecionada) {
+            case 0:
+                boolean oscarMelhorFilme = filme_companhia_cinematográficaPainel.isOscarMelhorFilme();
+                String oscar_melhor_diretor = filme_companhia_cinematográficaPainel.getOscarMelhorDiretor();
+                String oscar_melhor_ator = filme_companhia_cinematográficaPainel.getOscarMelhorAtor();
+                String oscar_melhor_atriz = filme_companhia_cinematográficaPainel.getOscarMelhorAtriz();
+                filme = new FilmeCompanhiaCinematográfica (sequencial, título, gênero, Integer.parseInt(ano), oscarMelhorFilme, oscar_melhor_diretor, oscar_melhor_ator, oscar_melhor_atriz);
+                break;
+            case 1:
+                ProvedoraStreaming provedora_streaming = filme_provedora_streamingPainel.getSelectedProvedoraStreaming();
+                Produção produção = filme_provedora_streamingPainel.getSelectedProdução();
+                int total_episódios = filme_provedora_streamingPainel.getTotalEpisódios();
+                filme = new FilmeProvedoraStreaming (sequencial, título, gênero, Integer.parseInt(ano), provedora_streaming, produção, total_episódios);
+        }
+        
+        return filme;
     }
 
     /**
@@ -79,7 +101,7 @@ public class JanelaCadastroFilmes extends javax.swing.JFrame {
         java.awt.GridBagConstraints gridBagConstraints;
 
         jScrollPane1 = new javax.swing.JScrollPane();
-        filmes_cadastradosList = new javax.swing.JList<>();
+        filmes_cadastradosList = new javax.swing.JList();
         gêneroComboBox = new javax.swing.JComboBox<>();
         sequencialTextField = new javax.swing.JTextField();
         títuloTextField = new javax.swing.JTextField();
@@ -261,6 +283,8 @@ public class JanelaCadastroFilmes extends javax.swing.JFrame {
         gridBagConstraints.anchor = java.awt.GridBagConstraints.NORTHWEST;
         gridBagConstraints.insets = new java.awt.Insets(5, 5, 5, 5);
         getContentPane().add(jPanel1, gridBagConstraints);
+
+        especialização_filmeTabbedPane.setPreferredSize(new java.awt.Dimension(600, 200));
         getContentPane().add(especialização_filmeTabbedPane, new java.awt.GridBagConstraints());
 
         pack();
@@ -296,6 +320,21 @@ public class JanelaCadastroFilmes extends javax.swing.JFrame {
             gêneroComboBox.setSelectedItem(filme.getGenero());
             anoTextField.setText(Integer.toString(filme.getAno()));
         } else informarErro(mensagem_erro);
+        
+        if (filme instanceof FilmeCompanhiaCinematográfica) {
+            especialização_filmeTabbedPane.setSelectedIndex(0);
+            FilmeCompanhiaCinematográfica filme_companhia_cinematográfica = (FilmeCompanhiaCinematográfica) filme;
+            filme_companhia_cinematográfica.setOscarMelhorFilme(filme_companhia_cinematográfica.isOscarMelhorFilme());
+            filme_companhia_cinematográfica.setOscarMelhorDiretor(filme_companhia_cinematográfica.getOscarMelhorDiretor());
+            filme_companhia_cinematográfica.setOscarMelhorAtor(filme_companhia_cinematográfica.getOscarMelhorAtor());
+            filme_companhia_cinematográfica.setOscarMelhorAtriz(filme_companhia_cinematográfica.getOscarMelhorAtriz());
+        } else if (filme instanceof FilmeProvedoraStreaming) {
+            especialização_filmeTabbedPane.setSelectedIndex(1);
+            FilmeProvedoraStreaming filme_provedora_streaming = (FilmeProvedoraStreaming) filme;
+            filme_provedora_streaming.setProvedora(filme_provedora_streaming.getProvedora());
+            filme_provedora_streaming.setProdução(filme_provedora_streaming.getProdução());
+            filme_provedora_streaming.setTotalEpisódios(filme_provedora_streaming.getTotalEpisódios());
+        }
     }//GEN-LAST:event_consultarFilme
 
     private void alterarFilme(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_alterarFilme
@@ -317,7 +356,7 @@ public class JanelaCadastroFilmes extends javax.swing.JFrame {
         Filme visão = (Filme) filmes_cadastradosList.getSelectedValue();
         String mensagem_erro = null;
         Filme filme = null;
-        if(visão != null) mensagem_erro = controlador.removerFilme(visão.getSequencial());
+        if(visão != null) mensagem_erro = controlador.removerFilme(visão);
         else mensagem_erro="Nenhum filme selecionado";
         if(mensagem_erro == null) modelo_lista_filmes.removeElement(visão);
         else informarErro(mensagem_erro);
@@ -325,6 +364,8 @@ public class JanelaCadastroFilmes extends javax.swing.JFrame {
 
     private void limparCampos(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_limparCampos
         limparCampos();
+        filme_companhia_cinematográficaPainel.limparCampos();
+        filme_provedora_streamingPainel.limparCampos();
     }//GEN-LAST:event_limparCampos
 
     /**
@@ -369,7 +410,7 @@ public class JanelaCadastroFilmes extends javax.swing.JFrame {
     private javax.swing.JButton consultaButton;
     private javax.swing.JTabbedPane especialização_filmeTabbedPane;
     private javax.swing.JLabel filmesCadastradosLabel;
-    private javax.swing.JList<String> filmes_cadastradosList;
+    private javax.swing.JList filmes_cadastradosList;
     private javax.swing.JLabel generoLabel;
     private javax.swing.JComboBox<String> gêneroComboBox;
     private javax.swing.JLabel identificadorSequencialLabel;

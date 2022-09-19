@@ -221,9 +221,9 @@ public class Filme {
             while (lista_resultados.next()) {
                 return new FilmeCompanhiaCinematográfica (sequencial, título, gênero, ano,
                         lista_resultados.getBoolean("OscarMelhorFilme"),
-                        lista_resultados.getBoolean("OscarMelhorDiretor"),
-                        lista_resultados.getBoolean("OscarMelhorAtor"),
-                        lista_resultados.getBoolean("OscarMelhorAtriz")                        
+                        lista_resultados.getString("OscarMelhorDiretor"),
+                        lista_resultados.getString("OscarMelhorAtor"),
+                        lista_resultados.getString("OscarMelhorAtriz")                        
                 );
             }
             lista_resultados.close();
