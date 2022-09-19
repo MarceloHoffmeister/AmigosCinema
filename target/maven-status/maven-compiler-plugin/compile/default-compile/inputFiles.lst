@@ -1,7 +1,11 @@
 /home/hoffmeister/NetBeansProjects/AmigosCinema/src/main/java/interfaces/JanelaCadastroAmigos.java
+/home/hoffmeister/NetBeansProjects/AmigosCinema/src/main/java/entidade/FilmeProvedoraStreaming.java
+/home/hoffmeister/NetBeansProjects/AmigosCinema/src/main/java/entidade/FilmeCompanhiaCinematográfica.java
 /home/hoffmeister/NetBeansProjects/AmigosCinema/src/main/java/entidade/Filme.java
+/home/hoffmeister/NetBeansProjects/AmigosCinema/src/main/java/interfaces/PainelFilmeCompanhiaCinematográfica.java
 /home/hoffmeister/NetBeansProjects/AmigosCinema/src/main/java/entidade/Amigo.java
 /home/hoffmeister/NetBeansProjects/AmigosCinema/src/main/java/controle/ControladorCadastroAmigos.java
+/home/hoffmeister/NetBeansProjects/AmigosCinema/src/main/java/interfaces/PainelFilmeProvedoraStreaming.java
 /home/hoffmeister/NetBeansProjects/AmigosCinema/src/main/java/interfaces/JanelaCadastroFilmes.java
 /home/hoffmeister/NetBeansProjects/AmigosCinema/src/main/java/persistência/BD.java
 /home/hoffmeister/NetBeansProjects/AmigosCinema/src/main/java/controle/ControladorCadastroFilmes.java

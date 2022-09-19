@@ -19,6 +19,8 @@ public class JanelaCadastroFilmes extends javax.swing.JFrame {
 
     ControladorCadastroFilmes controlador;
     DefaultListModel modelo_lista_filmes;
+    PainelFilmeCompanhiaCinematográfica filme_companhia_cinematográficaPainel;
+    PainelFilmeProvedoraStreaming filme_provedora_streamingPainel;
     
     /**
      * Creates new form JanelaCadastroFilmes
@@ -26,6 +28,10 @@ public class JanelaCadastroFilmes extends javax.swing.JFrame {
     public JanelaCadastroFilmes(ControladorCadastroFilmes controlador) {
         this.controlador = controlador;
         initComponents();
+        filme_companhia_cinematográficaPainel = new PainelFilmeCompanhiaCinematográfica();
+        filme_provedora_streamingPainel = new PainelFilmeProvedoraStreaming();
+        especialização_filmeTabbedPane.addTab("Filme de Companhia Cinematográfica", filme_companhia_cinematográficaPainel);
+        especialização_filmeTabbedPane.addTab("Filme de Provedora de Streaming", filme_provedora_streamingPainel);
         inicializarListaFilmes();
         limparCampos();
     }

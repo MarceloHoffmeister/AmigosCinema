@@ -62,7 +62,7 @@ public class Filme {
             comando.close();
         } catch (SQLException exceção_sql){
             exceção_sql.printStackTrace();
-            return"Erro na Inserção do Amigo no BD";
+            return"Erro na Inserção do Filme no BD";
         }
         int sequencial = últimoSequencial();
         if(filme instanceof FilmeCompanhiaCinematográfica) {
@@ -88,9 +88,9 @@ public class Filme {
                     + " VALUES (?, ?, ?, ?)";
             try {
                 PreparedStatement comando = BD.conexão.prepareStatement(sql);
-                comando.setBoolean(1, filme_provedora_streaming.getProvedora().ordinal());
-                comando.setString(2, filme_provedora_streaming.getProdução().ordinal());
-                comando.setString(3, filme_provedora_streaming.getTotalEpisódios());
+                comando.setInt(1, filme_provedora_streaming.getProvedora().ordinal());
+                comando.setInt(2, filme_provedora_streaming.getProdução().ordinal());
+                comando.setInt(3, filme_provedora_streaming.getTotalEpisódios());
                 comando.setInt(4, sequencial);
                 comando.executeUpdate();
                 comando.close();
@@ -112,7 +112,6 @@ public class Filme {
             comando.setInt(4, filme.getSequencial());
             comando.executeUpdate();
             comando.close();
-            return null;
         } catch(SQLException exceção_sql) {
             exceção_sql.printStackTrace();
             return"Erro na Alteração do Amigo no BD";
@@ -140,9 +139,9 @@ public class Filme {
                     + " WHERE FilmeId=?";
             try {
                 PreparedStatement comando = BD.conexão.prepareStatement(sql);
-                comando.setBoolean(1, filme_provedora_streaming.getProvedora().ordinal());
-                comando.setString(2, filme_provedora_streaming.getProdução().ordinal());
-                comando.setString(3, filme_provedora_streaming.getTotalEpisódios());
+                comando.setInt(1, filme_provedora_streaming.getProvedora().ordinal());
+                comando.setInt(2, filme_provedora_streaming.getProdução().ordinal());
+                comando.setInt(3, filme_provedora_streaming.getTotalEpisódios());
                 comando.setInt(4, filme_provedora_streaming.getSequencial());
                 comando.executeUpdate();
                 comando.close();
@@ -195,7 +194,7 @@ public class Filme {
     public static Filme buscarFilme(int sequencial){
         String sql = null;
         ResultSet lista_resultados = null;
-        sql = "SELECT * FROM Filme WHERE Sequencial=?";
+        sql = "SELECT Título, Gênero, Ano, FROM Filme WHERE Sequencial=?";
         String título = null;
         Gênero gênero = null;
         int ano = 0;

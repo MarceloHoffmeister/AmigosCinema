@@ -4,6 +4,7 @@
  */
 package interfaces;
 
+import entidade.FilmeProvedoraStreaming.Produção;
 import entidade.FilmeProvedoraStreaming.ProvedoraStreaming;
 import javax.swing.DefaultComboBoxModel;
 
@@ -18,6 +19,46 @@ public class PainelFilmeProvedoraStreaming extends javax.swing.JPanel {
      */
     public PainelFilmeProvedoraStreaming() {
         initComponents();
+    }
+    
+    public ProvedoraStreaming getSelectedProvedoraStreaming() {
+        Object provedora_streaming = provedoraComboBox.getSelectedItem();
+        if (provedora_streaming != null) return (ProvedoraStreaming) provedora_streaming;
+        else return null;
+    }
+    
+    public void setSelectedProvedoraStreaming(ProvedoraStreaming provedora_streaming) {
+        provedoraComboBox.setSelectedItem(provedora_streaming);
+    }
+    
+    public Produção getSelectedProdução() {
+        Produção produção = null;
+        if (produçãoButtonGroup.getSelection() != null)
+            produção = Produção.values()[produçãoButtonGroup.getSelection().getMnemonic()];
+        return produção;
+    }
+    
+    public void setSelectedProdução(int índice_produção) {
+        switch(índice_produção) {
+            case 0: filmeRadioButton.setSelected(true); break;
+            case 1: sérieRadioButton.setSelected(true);
+        }
+    }
+    
+    public int getTotalEpisódios() {
+        String total_episódios_str = total_episódiosTextField.getText();
+        if (!total_episódios_str.isEmpty()) return Integer.parseInt(total_episódios_str);
+        else return -1;
+    }
+    
+    public void setTotalEpisódios(int total_episódios) {
+        total_episódiosTextField.setText(total_episódios+"");
+    }
+    
+    public void limparCampos() {
+        provedoraComboBox.setSelectedIndex(-1);
+        produçãoButtonGroup.clearSelection();
+        total_episódiosTextField.setText("");
     }
 
     /**
@@ -37,7 +78,7 @@ public class PainelFilmeProvedoraStreaming extends javax.swing.JPanel {
         produçãoPanel = new javax.swing.JPanel();
         filmeRadioButton = new javax.swing.JRadioButton();
         sérieRadioButton = new javax.swing.JRadioButton();
-        tota_episódiosTextField = new javax.swing.JTextField();
+        total_episódiosTextField = new javax.swing.JTextField();
 
         provedoraLabel.setText("Provedora de Streaming");
 
@@ -79,7 +120,7 @@ public class PainelFilmeProvedoraStreaming extends javax.swing.JPanel {
                 .addContainerGap())
         );
 
-        tota_episódiosTextField.setPreferredSize(new java.awt.Dimension(246, 25));
+        total_episódiosTextField.setPreferredSize(new java.awt.Dimension(246, 25));
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
         this.setLayout(layout);
@@ -95,7 +136,7 @@ public class PainelFilmeProvedoraStreaming extends javax.swing.JPanel {
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(provedoraComboBox, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(produçãoPanel, javax.swing.GroupLayout.PREFERRED_SIZE, 129, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(tota_episódiosTextField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(total_episódiosTextField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
@@ -112,7 +153,7 @@ public class PainelFilmeProvedoraStreaming extends javax.swing.JPanel {
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(total_episódiosLabel)
-                    .addComponent(tota_episódiosTextField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(total_episódiosTextField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
     }// </editor-fold>//GEN-END:initComponents
@@ -126,7 +167,7 @@ public class PainelFilmeProvedoraStreaming extends javax.swing.JPanel {
     private javax.swing.JComboBox<String> provedoraComboBox;
     private javax.swing.JLabel provedoraLabel;
     private javax.swing.JRadioButton sérieRadioButton;
-    private javax.swing.JTextField tota_episódiosTextField;
     private javax.swing.JLabel total_episódiosLabel;
+    private javax.swing.JTextField total_episódiosTextField;
     // End of variables declaration//GEN-END:variables
 }

@@ -8,7 +8,27 @@ public class FilmeProvedoraStreaming extends Filme {
     private Produção produção;
     private int totalEpisódios;
     
-    public FilmeProvedoraStreaming(int sequencial, String título, Gênero gênero, int ano) {
+    public FilmeProvedoraStreaming(
+            int sequencial,
+            String título,
+            Gênero gênero,
+            int ano,
+            ProvedoraStreaming provedora,
+            Produção produção,
+            int totalEpisódios
+    ) {
         super(sequencial, título, gênero, ano);
+    }
+    
+    public ProvedoraStreaming getProvedora() {
+        return this.provedora;
+    }
+    
+    public Produção getProdução() {
+        return this.produção;
+    }
+    
+    public int getTotalEpisódios() {
+        return this.totalEpisódios;
     }
 }
