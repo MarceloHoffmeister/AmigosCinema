@@ -1,7 +1,3 @@
-/*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JFrame.java to edit this template
- */
 package interfaces;
 
 import controle.ControladorCadastroFilmes;
@@ -15,20 +11,12 @@ import javax.swing.DefaultComboBoxModel;
 import javax.swing.DefaultListModel;
 import javax.swing.JOptionPane;
 
-/**
- *
- * @author hoffmeister
- */
 public class JanelaCadastroFilmes extends javax.swing.JFrame {
-
     ControladorCadastroFilmes controlador;
     DefaultListModel modelo_lista_filmes;
     PainelFilmeCompanhiaCinematográfica filme_companhia_cinematográficaPainel;
     PainelFilmeProvedoraStreaming filme_provedora_streamingPainel;
-    
-    /**
-     * Creates new form JanelaCadastroFilmes
-     */
+
     public JanelaCadastroFilmes(ControladorCadastroFilmes controlador) {
         this.controlador = controlador;
         initComponents();
@@ -330,16 +318,16 @@ public class JanelaCadastroFilmes extends javax.swing.JFrame {
             anoTextField.setText(Integer.toString(filme.getAno()));
         } else informarErro(mensagem_erro);
         
-        if (filme instanceof FilmeCompanhiaCinematográfica) {
+        if (filme instanceof FilmeCompanhiaCinematográfica filmeCompanhiaCinematográfica) {
             especialização_filmeTabbedPane.setSelectedIndex(0);
-            FilmeCompanhiaCinematográfica filme_companhia_cinematográfica = (FilmeCompanhiaCinematográfica) filme;
+            FilmeCompanhiaCinematográfica filme_companhia_cinematográfica = filmeCompanhiaCinematográfica;
             filme_companhia_cinematográfica.setOscarMelhorFilme(filme_companhia_cinematográfica.isOscarMelhorFilme());
             filme_companhia_cinematográfica.setOscarMelhorDiretor(filme_companhia_cinematográfica.getOscarMelhorDiretor());
             filme_companhia_cinematográfica.setOscarMelhorAtor(filme_companhia_cinematográfica.getOscarMelhorAtor());
             filme_companhia_cinematográfica.setOscarMelhorAtriz(filme_companhia_cinematográfica.getOscarMelhorAtriz());
-        } else if (filme instanceof FilmeProvedoraStreaming) {
+        } else if (filme instanceof FilmeProvedoraStreaming filmeProvedoraStreaming) {
             especialização_filmeTabbedPane.setSelectedIndex(1);
-            FilmeProvedoraStreaming filme_provedora_streaming = (FilmeProvedoraStreaming) filme;
+            FilmeProvedoraStreaming filme_provedora_streaming = filmeProvedoraStreaming;
             filme_provedora_streaming.setProvedora(filme_provedora_streaming.getProvedora());
             filme_provedora_streaming.setProdução(filme_provedora_streaming.getProdução());
             filme_provedora_streaming.setTotalEpisódios(filme_provedora_streaming.getTotalEpisódios());

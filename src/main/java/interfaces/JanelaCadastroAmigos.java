@@ -1,7 +1,3 @@
-/*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JFrame.java to edit this template
- */
 package interfaces;
 
 import controle.ControladorCadastroAmigos;
@@ -10,18 +6,11 @@ import entidade.Amigo.EstadoCivil;
 import javax.swing.JOptionPane;
 import javax.swing.DefaultComboBoxModel;
 
-/**
- *
- * @author hoffmeister
- */
 public class JanelaCadastroAmigos extends javax.swing.JFrame {
 
     ControladorCadastroAmigos controlador;
     Amigo[] amigos_cadastrados;
-    
-    /**
-     * Creates new form JanelaCadastroAmigos
-     */
+
     public JanelaCadastroAmigos(ControladorCadastroAmigos controlador) {
         this.controlador = controlador;
         amigos_cadastrados = Amigo.getVisões();

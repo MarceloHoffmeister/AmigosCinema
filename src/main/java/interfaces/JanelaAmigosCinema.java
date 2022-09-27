@@ -1,7 +1,3 @@
-/*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JFrame.java to edit this template
- */
 package interfaces;
 
 import controle.ControladorCadastroAmigos;
@@ -9,15 +5,7 @@ import controle.ControladorCadastroFilmes;
 import javax.swing.JOptionPane;
 import persistência.BD;
 
-/**
- *
- * @author hoffmeister
- */
 public class JanelaAmigosCinema extends javax.swing.JFrame {
-
-    /**
-     * Creates new form JanelaAmigosCinema
-     */
     public JanelaAmigosCinema() {
         BD.criaConexão();
         initComponents();

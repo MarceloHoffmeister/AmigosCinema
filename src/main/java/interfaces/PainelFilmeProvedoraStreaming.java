@@ -1,22 +1,10 @@
-/*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JPanel.java to edit this template
- */
 package interfaces;
 
 import entidade.FilmeProvedoraStreaming.Produção;
 import entidade.FilmeProvedoraStreaming.ProvedoraStreaming;
 import javax.swing.DefaultComboBoxModel;
 
-/**
- *
- * @author hoffmeister
- */
 public class PainelFilmeProvedoraStreaming extends javax.swing.JPanel {
-
-    /**
-     * Creates new form PainelFilmeProvedoraStreaming
-     */
     public PainelFilmeProvedoraStreaming() {
         initComponents();
     }
