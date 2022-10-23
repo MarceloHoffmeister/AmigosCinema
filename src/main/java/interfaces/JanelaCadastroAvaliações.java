@@ -1,20 +1,65 @@
-/*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JFrame.java to edit this template
- */
 package interfaces;
 
-/**
- *
- * @author hoffmeister
- */
-public class JanelaCadastroAvaliações extends javax.swing.JFrame {
+import controle.ControladorCadastroAvaliações;
+import entidade.Amigo;
+import entidade.Avaliação;
+import entidade.Avaliação.Classificação;
+import entidade.Avaliação.Preferência;
+import entidade.Filme;
+import java.sql.Timestamp;
+import java.util.Calendar;
+import javax.swing.DefaultComboBoxModel;
+import javax.swing.DefaultListModel;
+import javax.swing.JOptionPane;
 
-    /**
-     * Creates new form JanelaCadastroAvaliações
-     */
-    public JanelaCadastroAvaliações() {
+public class JanelaCadastroAvaliações extends javax.swing.JFrame {
+    
+    ControladorCadastroAvaliações controlador;
+    DefaultListModel modelo_lista_avaliações;
+    Amigo[] amigos_cadastrados;
+    Filme[] filmes_cadastrados;
+    
+    public JanelaCadastroAvaliações(ControladorCadastroAvaliações controlador) {
+        this.controlador = controlador;
+        amigos_cadastrados = Amigo.getVisões();
+        filmes_cadastrados = Filme.getVisões();
         initComponents();
+        inicializarListaAvaliações();
+        limparCampos();
+    }
+    
+    private void inicializarListaAvaliações() {
+        modelo_lista_avaliações = (DefaultListModel)avaliações_cadastradasList.getModel();
+        avaliações_cadastradasList.setModel(modelo_lista_avaliações);
+        Avaliação[] visões = Avaliação.getVisões();
+        for (Avaliação visão : visões) modelo_lista_avaliações.addElement(visão.toString());
+    }
+    
+    private Avaliação obtémAvaliaçãoInformada() {
+        String sequencial_str = sequencialTextField.getText();
+        int sequencial = 0;
+        if (!sequencial_str.isEmpty()) sequencial = Integer.parseInt(sequencial_str);
+        Amigo visão_amigo = (Amigo) amigos_cadastradosComboBox.getSelectedItem();
+        if (visão_amigo == null) return null;
+        Filme visão_filme = (Filme) filmes_cadastradosComboBox.getSelectedItem();
+        if (visão_filme == null) return null;
+        Classificação classificação_trama = null;
+        if (classificação_tramaComboBox.getSelectedItem() != null)
+            classificação_trama = (Classificação) classificação_tramaComboBox.getSelectedItem();
+        else return null;
+        Classificação classificação_direção = null;
+        if (classificação_direçãoComboBox.getSelectedItem() != null)
+            classificação_direção = (Classificação) classificação_direçãoComboBox.getSelectedItem();
+        else return null;
+        Classificação classificação_atuação = null;
+        if (classificação_atuaçãoComboBox.getSelectedItem() != null)
+            classificação_atuação = (Classificação) classificação_atuaçãoComboBox.getSelectedItem();
+        else return null;
+        Preferência preferência = null;
+        if (preferênciaButtonGroup.getSelection() != null)
+            preferência = Preferência.values()[preferênciaButtonGroup.getSelection().getMnemonic()];
+        Timestamp data_hora = new Timestamp(Calendar.getInstance().getTimeInMillis());
+        return new Avaliação(sequencial, visão_amigo, visão_filme, classificação_trama, classificação_direção, classificação_atuação, preferência, data_hora);
     }
 
     /**
@@ -26,57 +71,381 @@ public class JanelaCadastroAvaliações extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
+        preferênciaButtonGroup = new javax.swing.ButtonGroup();
+        avaliaçõesCadastradasLabel = new javax.swing.JLabel();
+        ordemAvaliação = new javax.swing.JLabel();
+        amigosCadastradosLabel = new javax.swing.JLabel();
+        classificaçãoTramaLabel = new javax.swing.JLabel();
+        classificaçãoDireçãoLabel = new javax.swing.JLabel();
+        classificaçãoAtuaçãoLabel = new javax.swing.JLabel();
+        preferênciaLabel = new javax.swing.JLabel();
+        dataHoraLabel = new javax.swing.JLabel();
+        jScrollPane1 = new javax.swing.JScrollPane();
+        avaliações_cadastradasList = new javax.swing.JList();
+        sequencialTextField = new javax.swing.JTextField();
+        amigos_cadastradosComboBox = new javax.swing.JComboBox<>();
+        classificação_tramaComboBox = new javax.swing.JComboBox<>();
+        classificação_direçãoComboBox = new javax.swing.JComboBox<>();
+        classificação_atuaçãoComboBox = new javax.swing.JComboBox<>();
+        preferênciaPanel = new javax.swing.JPanel();
+        melhoresRadioButton = new javax.swing.JRadioButton();
+        pioresRadioButton = new javax.swing.JRadioButton();
+        data_horaTextField = new javax.swing.JTextField();
+        jPanel2 = new javax.swing.JPanel();
+        inserirButton = new javax.swing.JButton();
+        consultarButton = new javax.swing.JButton();
+        removerButton = new javax.swing.JButton();
+        alterarButton = new javax.swing.JButton();
+        limparButton = new javax.swing.JButton();
+        filmesCadastradosLabel = new javax.swing.JLabel();
+        filmes_cadastradosComboBox = new javax.swing.JComboBox<>();
+
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+
+        avaliaçõesCadastradasLabel.setText("Avaliações Cadastradas");
+
+        ordemAvaliação.setText("Ordem da Avaliação");
+
+        amigosCadastradosLabel.setText("Amigos Cadastrados");
+
+        classificaçãoTramaLabel.setText("Classificação da Trama");
+
+        classificaçãoDireçãoLabel.setText("Classificação da Direção");
+
+        classificaçãoAtuaçãoLabel.setText("Classificação da Atuação");
+
+        preferênciaLabel.setText("Preferência");
+
+        dataHoraLabel.setText("Data e Hora");
+
+        avaliações_cadastradasList.setModel(new DefaultListModel());
+        jScrollPane1.setViewportView(avaliações_cadastradasList);
+
+        amigos_cadastradosComboBox.setModel(new DefaultComboBoxModel(amigos_cadastrados));
+
+        classificação_tramaComboBox.setModel(new DefaultComboBoxModel(Classificação.values()));
+
+        classificação_direçãoComboBox.setModel(new DefaultComboBoxModel(Classificação.values()));
+
+        classificação_atuaçãoComboBox.setModel(new DefaultComboBoxModel(Classificação.values()));
+
+        melhoresRadioButton.setText("10 Melhores");
+
+        pioresRadioButton.setText("10 Piores");
+
+        javax.swing.GroupLayout preferênciaPanelLayout = new javax.swing.GroupLayout(preferênciaPanel);
+        preferênciaPanel.setLayout(preferênciaPanelLayout);
+        preferênciaPanelLayout.setHorizontalGroup(
+            preferênciaPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(preferênciaPanelLayout.createSequentialGroup()
+                .addGap(19, 19, 19)
+                .addComponent(melhoresRadioButton)
+                .addGap(26, 26, 26)
+                .addComponent(pioresRadioButton)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+        );
+        preferênciaPanelLayout.setVerticalGroup(
+            preferênciaPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(preferênciaPanelLayout.createSequentialGroup()
+                .addGroup(preferênciaPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(melhoresRadioButton)
+                    .addComponent(pioresRadioButton))
+                .addGap(0, 12, Short.MAX_VALUE))
+        );
+
+        inserirButton.setText("Inserir");
+        inserirButton.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                inserirAvaliação(evt);
+            }
+        });
+
+        consultarButton.setText("Consultar");
+        consultarButton.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                consultarAvaliação(evt);
+            }
+        });
+
+        removerButton.setText("Remover");
+        removerButton.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                removerAvaliação(evt);
+            }
+        });
+
+        alterarButton.setText("Alterar");
+        alterarButton.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                alterarAvaliação(evt);
+            }
+        });
+
+        limparButton.setText("Limpar");
+
+        javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
+        jPanel2.setLayout(jPanel2Layout);
+        jPanel2Layout.setHorizontalGroup(
+            jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel2Layout.createSequentialGroup()
+                .addGap(15, 15, 15)
+                .addComponent(inserirButton)
+                .addGap(18, 18, 18)
+                .addComponent(consultarButton)
+                .addGap(18, 18, 18)
+                .addComponent(removerButton)
+                .addGap(18, 18, 18)
+                .addComponent(alterarButton)
+                .addGap(18, 18, 18)
+                .addComponent(limparButton)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+        );
+        jPanel2Layout.setVerticalGroup(
+            jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel2Layout.createSequentialGroup()
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(inserirButton)
+                    .addComponent(consultarButton)
+                    .addComponent(removerButton)
+                    .addComponent(alterarButton)
+                    .addComponent(limparButton))
+                .addGap(35, 35, 35))
+        );
+
+        filmesCadastradosLabel.setText("Filmes cadastrados");
+
+        filmes_cadastradosComboBox.setModel(new DefaultComboBoxModel(filmes_cadastrados));
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 400, Short.MAX_VALUE)
+            .addGroup(layout.createSequentialGroup()
+                .addGap(84, 84, 84)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(preferênciaLabel)
+                            .addGroup(layout.createSequentialGroup()
+                                .addComponent(dataHoraLabel)
+                                .addGap(48, 48, 48)
+                                .addComponent(data_horaTextField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(preferênciaPanel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                    .addGroup(layout.createSequentialGroup()
+                        .addComponent(filmesCadastradosLabel)
+                        .addGap(0, 0, Short.MAX_VALUE))
+                    .addGroup(layout.createSequentialGroup()
+                        .addComponent(avaliaçõesCadastradasLabel)
+                        .addGap(50, 50, 50)
+                        .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 0, Short.MAX_VALUE)
+                        .addGap(210, 210, 210))
+                    .addGroup(layout.createSequentialGroup()
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(layout.createSequentialGroup()
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(classificaçãoAtuaçãoLabel)
+                                    .addComponent(classificaçãoTramaLabel)
+                                    .addComponent(classificaçãoDireçãoLabel))
+                                .addGap(46, 46, 46)
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(classificação_tramaComboBox, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addComponent(classificação_direçãoComboBox, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addComponent(classificação_atuaçãoComboBox, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                            .addGroup(layout.createSequentialGroup()
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(ordemAvaliação)
+                                    .addComponent(amigosCadastradosLabel))
+                                .addGap(67, 67, 67)
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(sequencialTextField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addComponent(amigos_cadastradosComboBox, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addComponent(filmes_cadastradosComboBox, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                            .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addContainerGap(120, Short.MAX_VALUE))))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 300, Short.MAX_VALUE)
+            .addGroup(layout.createSequentialGroup()
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(18, 18, 18)
+                        .addComponent(avaliaçõesCadastradasLabel))
+                    .addGroup(layout.createSequentialGroup()
+                        .addContainerGap()
+                        .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 56, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addGap(18, 18, 18)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(ordemAvaliação)
+                    .addComponent(sequencialTextField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(18, 18, 18)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(amigosCadastradosLabel)
+                    .addComponent(amigos_cadastradosComboBox, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(18, 18, 18)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(filmesCadastradosLabel)
+                    .addComponent(filmes_cadastradosComboBox, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(18, 18, 18)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(classificaçãoTramaLabel)
+                    .addComponent(classificação_tramaComboBox, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(18, 18, 18)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(classificaçãoDireçãoLabel)
+                    .addComponent(classificação_direçãoComboBox, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(18, 18, 18)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(classificaçãoAtuaçãoLabel)
+                    .addComponent(classificação_atuaçãoComboBox, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(18, 18, 18)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(preferênciaPanel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addGroup(layout.createSequentialGroup()
+                        .addComponent(preferênciaLabel)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(dataHoraLabel)
+                            .addComponent(data_horaTextField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 39, Short.MAX_VALUE)
+                .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, 37, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(35, 35, 35))
         );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
+    private void inserirAvaliação(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_inserirAvaliação
+        Avaliação avaliação = obtémAvaliaçãoInformada();
+        String mensagem_erro = null;
+        if (avaliação != null) mensagem_erro = controlador.inserirAvaliação(avaliação);
+        else mensagem_erro = "Algum atributo da avaliação não foi informado";
+        if (mensagem_erro == null) {
+            int sequencial = Avaliação.últimoSequencial();
+            avaliação.setSequencial(sequencial);
+            modelo_lista_avaliações.addElement(avaliação.getVisão());
+            avaliações_cadastradasList.setSelectedIndex(modelo_lista_avaliações.size()-1);
+            sequencialTextField.setText("" + sequencial);
+            data_horaTextField.setText(Avaliação.formatarDataHora(avaliação.getDataHora().toString()));
+        } else informarErro(mensagem_erro);
+    }//GEN-LAST:event_inserirAvaliação
+
+    private void alterarAvaliação(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_alterarAvaliação
+        Avaliação avaliação = obtémAvaliaçãoInformada();
+        String mensagem_erro = null;
+        if (avaliação != null) mensagem_erro = controlador.alterarAvaliação(avaliação);
+        else mensagem_erro = "Algum atributo da avaliação não foi informado";
+        if (mensagem_erro != null) informarErro(mensagem_erro);
+    }//GEN-LAST:event_alterarAvaliação
+
+    private void consultarAvaliação(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_consultarAvaliação
+        Avaliação visão = (Avaliação) avaliações_cadastradasList.getSelectedValue();
+        String mensagem_erro = null;
+        Avaliação avaliação = null;
+        if(visão != null) {
+            avaliação = Avaliação.buscarAvaliação(visão.getSequencial());
+            if(avaliação == null) mensagem_erro = "Avaliação não cadastrada";
+        } else mensagem_erro = "Nenhum avaliação selecionada";
+        if(mensagem_erro == null) {
+            sequencialTextField.setText(Integer.toString(avaliação.getSequencial()));
+            amigos_cadastradosComboBox.setSelectedItem(avaliação.getAmigo());
+            filmes_cadastradosComboBox.setSelectedItem(avaliação.getFilme());
+            classificação_tramaComboBox.setSelectedItem(avaliação.getClassificaçãoTrama());
+            classificação_direçãoComboBox.setSelectedItem(avaliação.getClassificaçãoDireção());
+            classificação_atuaçãoComboBox.setSelectedItem(avaliação.getClassificaçãoAtuação());
+            selecionaPreferênciaRadioButton(avaliação.getPreferência().ordinal());
+            data_horaTextField.setText(Avaliação.formatarDataHora(avaliação.getDataHora().toString()));
+        } else informarErro(mensagem_erro);
+    }//GEN-LAST:event_consultarAvaliação
+
+    private void removerAvaliação(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_removerAvaliação
+        Avaliação visão = (Avaliação) avaliações_cadastradasList.getSelectedValue();
+        String mensagem_erro = null;
+        Filme filme = null;
+        if(visão != null) mensagem_erro = controlador.removerAvaliação(visão.getSequencial());
+        else mensagem_erro="Nenhuma avaliação selecionada";
+        if(mensagem_erro == null) modelo_lista_avaliações.removeElement(visão);
+        else informarErro(mensagem_erro);
+    }//GEN-LAST:event_removerAvaliação
+
+    private void selecionaPreferênciaRadioButton(int preferência) {
+        switch(preferência) {
+            case 0: melhoresRadioButton.setSelected(true); break;
+            case 1: pioresRadioButton.setSelected(true);
+        }
+    }
+    
     /**
      * @param args the command line arguments
      */
-    public static void main(String args[]) {
-        /* Set the Nimbus look and feel */
-        //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">
-        /* If Nimbus (introduced in Java SE 6) is not available, stay with the default look and feel.
-         * For details see http://download.oracle.com/javase/tutorial/uiswing/lookandfeel/plaf.html 
-         */
-        try {
-            for (javax.swing.UIManager.LookAndFeelInfo info : javax.swing.UIManager.getInstalledLookAndFeels()) {
-                if ("Nimbus".equals(info.getName())) {
-                    javax.swing.UIManager.setLookAndFeel(info.getClassName());
-                    break;
-                }
-            }
-        } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(JanelaCadastroAvaliações.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(JanelaCadastroAvaliações.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(JanelaCadastroAvaliações.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(JanelaCadastroAvaliações.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        }
-        //</editor-fold>
-
-        /* Create and display the form */
-        java.awt.EventQueue.invokeLater(new Runnable() {
-            public void run() {
-                new JanelaCadastroAvaliações().setVisible(true);
-            }
-        });
-    }
+//    public static void main(String args[]) {
+//        /* Set the Nimbus look and feel */
+//        //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">
+//        /* If Nimbus (introduced in Java SE 6) is not available, stay with the default look and feel.
+//         * For details see http://download.oracle.com/javase/tutorial/uiswing/lookandfeel/plaf.html 
+//         */
+//        try {
+//            for (javax.swing.UIManager.LookAndFeelInfo info : javax.swing.UIManager.getInstalledLookAndFeels()) {
+//                if ("Nimbus".equals(info.getName())) {
+//                    javax.swing.UIManager.setLookAndFeel(info.getClassName());
+//                    break;
+//                }
+//            }
+//        } catch (ClassNotFoundException ex) {
+//            java.util.logging.Logger.getLogger(JanelaCadastroAvaliações.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+//        } catch (InstantiationException ex) {
+//            java.util.logging.Logger.getLogger(JanelaCadastroAvaliações.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+//        } catch (IllegalAccessException ex) {
+//            java.util.logging.Logger.getLogger(JanelaCadastroAvaliações.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+//        } catch (javax.swing.UnsupportedLookAndFeelException ex) {
+//            java.util.logging.Logger.getLogger(JanelaCadastroAvaliações.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+//        }
+//        //</editor-fold>
+//
+//        /* Create and display the form */
+//        java.awt.EventQueue.invokeLater(new Runnable() {
+//            public void run() {
+//                new JanelaCadastroAvaliações().setVisible(true);
+//            }
+//        });
+//    }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton alterarButton;
+    private javax.swing.JLabel amigosCadastradosLabel;
+    private javax.swing.JComboBox<String> amigos_cadastradosComboBox;
+    private javax.swing.JLabel avaliaçõesCadastradasLabel;
+    private javax.swing.JList avaliações_cadastradasList;
+    private javax.swing.JLabel classificaçãoAtuaçãoLabel;
+    private javax.swing.JLabel classificaçãoDireçãoLabel;
+    private javax.swing.JLabel classificaçãoTramaLabel;
+    private javax.swing.JComboBox<String> classificação_atuaçãoComboBox;
+    private javax.swing.JComboBox<String> classificação_direçãoComboBox;
+    private javax.swing.JComboBox<String> classificação_tramaComboBox;
+    private javax.swing.JButton consultarButton;
+    private javax.swing.JLabel dataHoraLabel;
+    private javax.swing.JTextField data_horaTextField;
+    private javax.swing.JLabel filmesCadastradosLabel;
+    private javax.swing.JComboBox<String> filmes_cadastradosComboBox;
+    private javax.swing.JButton inserirButton;
+    private javax.swing.JPanel jPanel2;
+    private javax.swing.JScrollPane jScrollPane1;
+    private javax.swing.JButton limparButton;
+    private javax.swing.JRadioButton melhoresRadioButton;
+    private javax.swing.JLabel ordemAvaliação;
+    private javax.swing.JRadioButton pioresRadioButton;
+    private javax.swing.ButtonGroup preferênciaButtonGroup;
+    private javax.swing.JLabel preferênciaLabel;
+    private javax.swing.JPanel preferênciaPanel;
+    private javax.swing.JButton removerButton;
+    private javax.swing.JTextField sequencialTextField;
     // End of variables declaration//GEN-END:variables
+
+    private void limparCampos() {
+    }
+    
+    private void informarErro(String mensagem){
+        JOptionPane.showMessageDialog(this, mensagem, "Erro", JOptionPane.ERROR_MESSAGE);
+    }
 }

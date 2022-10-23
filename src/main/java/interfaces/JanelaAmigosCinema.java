@@ -1,6 +1,7 @@
 package interfaces;
 
 import controle.ControladorCadastroAmigos;
+import controle.ControladorCadastroAvaliações;
 import controle.ControladorCadastroFilmes;
 import javax.swing.JOptionPane;
 import persistência.BD;
@@ -74,6 +75,11 @@ public class JanelaAmigosCinema extends javax.swing.JFrame {
         avaliacaoMenu.setLabel("Avaliação");
 
         cadastrar_avaliaçãoItemMenu.setText("Cadastrar");
+        cadastrar_avaliaçãoItemMenu.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                cadastrarAvaliações(evt);
+            }
+        });
         avaliacaoMenu.add(cadastrar_avaliaçãoItemMenu);
 
         pesquisar_avaliaçãoItemMenu.setText("Pesquisar");
@@ -118,6 +124,10 @@ public class JanelaAmigosCinema extends javax.swing.JFrame {
     private void cadastrarAmigo(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cadastrarAmigo
         new ControladorCadastroAmigos();
     }//GEN-LAST:event_cadastrarAmigo
+
+    private void cadastrarAvaliações(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cadastrarAvaliações
+        new ControladorCadastroAvaliações();
+    }//GEN-LAST:event_cadastrarAvaliações
 
     private void informarServiçoIndisponível() {
         JOptionPane.showMessageDialog(this, "Serviço Indísponível", "Informação", JOptionPane.INFORMATION_MESSAGE);

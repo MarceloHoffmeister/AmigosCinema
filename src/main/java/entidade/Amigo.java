@@ -174,5 +174,5 @@ public class Amigo {
         this.apelido = apelido;
     }
     
-    public String getVisão() { return new Amigo(nome, apelido).toString(); }
+    public Amigo getVisão() { return new Amigo(nome, apelido); }
 }

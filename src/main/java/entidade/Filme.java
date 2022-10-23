@@ -309,5 +309,5 @@ public class Filme {
         this.sequencial = sequencial;
     }
     
-    public String getVisão() { return new Filme(sequencial, título).toString(); }
+    public Filme getVisão() { return new Filme(sequencial, título); }
 }

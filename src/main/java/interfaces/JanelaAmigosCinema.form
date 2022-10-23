@@ -49,6 +49,9 @@
               <Properties>
                 <Property name="text" type="java.lang.String" value="Cadastrar"/>
               </Properties>
+              <Events>
+                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="cadastrarAvalia&#xe7;&#xf5;es"/>
+              </Events>
             </MenuItem>
             <MenuItem class="javax.swing.JMenuItem" name="pesquisar_avalia&#xe7;&#xe3;oItemMenu">
               <Properties>

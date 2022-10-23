@@ -330,7 +330,7 @@ public class JanelaCadastroAmigos extends javax.swing.JFrame {
         if(amigo!=null) mensagem_erro = controlador.inserirAmigo(amigo);
         else mensagem_erro = "Algum atributo do amigo não foi informado";
         if(mensagem_erro == null) {
-            String visão = amigo.getVisão();
+            String visão = amigo.getVisão().toString();
             amigos_cadastradosComboBox.addItem(visão);
             amigos_cadastradosComboBox.setSelectedItem(visão);
         } else informarErro(mensagem_erro);
